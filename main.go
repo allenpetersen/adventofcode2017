@@ -58,6 +58,9 @@ func readInputFile(name string) string {
 }
 
 func mustAtoi(b byte) int {
-	result, _ := strconv.Atoi(string(b))
+	result, err := strconv.Atoi(string(b))
+	if err != nil {
+		panic(err)
+	}
 	return result
 }
