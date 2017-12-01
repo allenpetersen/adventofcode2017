@@ -18,12 +18,12 @@ func day1a(input string) string {
 
 	for i := range input[:len(input)-1] {
 		if input[i] == input[i+1] {
-			matches = append(matches, mustAtoi(input[i]))
+			matches = append(matches, mustBtoi(input[i]))
 		}
 	}
 
 	if input[0] == input[len(input)-1] {
-		matches = append(matches, mustAtoi(input[0]))
+		matches = append(matches, mustBtoi(input[0]))
 	}
 
 	result := 0
@@ -41,7 +41,7 @@ func day1b(input string) string {
 	for i := range input[:offset] {
 		target := i + offset
 		if input[i] == input[target] {
-			result += mustAtoi(input[i]) * 2
+			result += mustBtoi(input[i]) * 2
 		}
 	}
 
@@ -57,7 +57,7 @@ func readInputFile(name string) string {
 	return string(b)
 }
 
-func mustAtoi(b byte) int {
+func mustBtoi(b byte) int {
 	result, err := strconv.Atoi(string(b))
 	if err != nil {
 		panic(err)
