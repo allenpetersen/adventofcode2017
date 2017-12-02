@@ -1,31 +1,36 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestDay1a(t *testing.T) {
-	rows := []struct {
-		input    string
-		expected string
-	}{
-		{"1122", "3"},
-		{"1111", "4"},
-		{"1234", "0"},
-		{"91212129", "9"},
-	}
+type testRow struct {
+	input    string
+	expected string
+}
 
+func runTest(t *testing.T, rows []testRow, fn func(string) string) {
 	for _, r := range rows {
-		result := day1a(r.input)
+		result := fn(r.input)
 		if r.expected != result {
 			t.Errorf("failed!\nexpected [%s]\nactual [%s]\n", r.expected, result)
 		}
 	}
 }
 
+func TestDay1a(t *testing.T) {
+	rows := []testRow{
+		{"1122", "3"},
+		{"1111", "4"},
+		{"1234", "0"},
+		{"91212129", "9"},
+	}
+
+	runTest(t, rows, day1a)
+}
+
 func TestDay1b(t *testing.T) {
-	rows := []struct {
-		input    string
-		expected string
-	}{
+	rows := []testRow{
 		{"1212", "6"},
 		{"1221", "0"},
 		{"123425", "4"},
@@ -33,10 +38,13 @@ func TestDay1b(t *testing.T) {
 		{"12131415", "4"},
 	}
 
-	for _, r := range rows {
-		result := day1b(r.input)
-		if r.expected != result {
-			t.Errorf("failed! input [%s]\nexpected [%s]\nactual [%s]\n", r.input, r.expected, result)
-		}
+	runTest(t, rows, day1b)
+}
+
+func TestDay2a(t *testing.T) {
+	rows := []testRow{
+		{"", ""},
 	}
+
+	runTest(t, rows, day2a)
 }

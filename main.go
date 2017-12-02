@@ -9,8 +9,12 @@ import (
 func main() {
 	fmt.Printf("Advent of Code 2017\n\n")
 
-	//fmt.Println(day1a(readInputFile("day1.txt")))
-	fmt.Println(day1b(readInputFile("day1.txt")))
+	runDay("day 1a", "day1.txt", day1a)
+	runDay("day 1b", "day1.txt", day1b)
+}
+
+func runDay(name, filename string, fn func(string) string) {
+	fmt.Printf("%s: %s\n", name, fn(readInputFile(filename)))
 }
 
 func day1a(input string) string {
@@ -46,6 +50,10 @@ func day1b(input string) string {
 	}
 
 	return strconv.Itoa(result)
+}
+
+func day2a(input string) string {
+	return ""
 }
 
 func readInputFile(name string) string {
