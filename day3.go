@@ -47,6 +47,7 @@ func buildGrid3a(goal int) (int, int) {
 	}
 	return x, y
 }
+
 func buildGrid3b(goal, max int) int {
 	x, y, minX, minY, maxX, maxY := 300, 300, 300, 300, 300, 300
 

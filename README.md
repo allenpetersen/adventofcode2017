@@ -2,4 +2,4 @@
 
 https://adventofcode.com/2017
 
-This code is written with extreme haste, please don't just too harshly.
+This code is written with extreme haste, please don't judge harshly.
