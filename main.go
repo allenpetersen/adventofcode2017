@@ -15,7 +15,9 @@ func main() {
 	//runDay("day 2a", "day2.txt", day2a)
 	//runDay("day 2b", "day2.txt", day2b)
 	//fmt.Println(buildGrid3a(265149))
-	fmt.Println(buildGrid3b(265149, 265149))
+	//fmt.Println(buildGrid3b(265149, 265149))
+	//runDay("day 4a", "day4.txt", day4a)
+	runDay("day 4b", "day4.txt", day4b)
 }
 
 func runDay(name, filename string, fn func(string) string) {

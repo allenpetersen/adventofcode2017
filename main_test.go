@@ -97,3 +97,41 @@ func TestBuildGrid3b(t *testing.T) {
 		}
 	}
 }
+
+func TestDay4A(t *testing.T) {
+	rows := []struct {
+		pass   string
+		result bool
+	}{
+		{"aa bb cc dd ee", true},
+		{"aa bb cc dd aa", false},
+		{"aa bb cc dd aaa", true},
+	}
+
+	for _, r := range rows {
+		result := checkPass(r.pass)
+		if r.result != result {
+			t.Errorf("failed! for %s\nexpected [%v]\nactual [%v]\n", r.pass, r.result, result)
+		}
+	}
+}
+
+func TestDay4B(t *testing.T) {
+	rows := []struct {
+		pass   string
+		result bool
+	}{
+		{"abcde fghij", true},
+		{"abcde xyz ecdab", false},
+		{"a ab abc abd abf abj", true},
+		{"iiii oiii ooii oooi oooo", true},
+		{"oiii ioii iioi iiio", false},
+	}
+
+	for _, r := range rows {
+		result := checkPass2(r.pass)
+		if r.result != result {
+			t.Errorf("failed! for %s\nexpected [%v]\nactual [%v]\n", r.pass, r.result, result)
+		}
+	}
+}
