@@ -98,7 +98,7 @@ func TestBuildGrid3b(t *testing.T) {
 	}
 }
 
-func TestDay4A(t *testing.T) {
+func TestDay4a(t *testing.T) {
 	rows := []struct {
 		pass   string
 		result bool
@@ -116,7 +116,7 @@ func TestDay4A(t *testing.T) {
 	}
 }
 
-func TestDay4B(t *testing.T) {
+func TestDay4b(t *testing.T) {
 	rows := []struct {
 		pass   string
 		result bool
@@ -132,6 +132,38 @@ func TestDay4B(t *testing.T) {
 		result := checkPass2(r.pass)
 		if r.result != result {
 			t.Errorf("failed! for %s\nexpected [%v]\nactual [%v]\n", r.pass, r.result, result)
+		}
+	}
+}
+
+func TestDay5a(t *testing.T) {
+	rows := []struct {
+		instructions []int
+		result       int
+	}{
+		{[]int{0, 3, 0, 1, -3}, 5},
+	}
+
+	for _, r := range rows {
+		result := runInstructionsA(r.instructions)
+		if r.result != result {
+			t.Errorf("failed!\nexpected [%v]\nactual [%v]\n", r.result, result)
+		}
+	}
+}
+
+func TestDay5b(t *testing.T) {
+	rows := []struct {
+		instructions []int
+		result       int
+	}{
+		{[]int{0, 3, 0, 1, -3}, 10},
+	}
+
+	for _, r := range rows {
+		result := runInstructionsB(r.instructions)
+		if r.result != result {
+			t.Errorf("failed!\nexpected [%v]\nactual [%v]\n", r.result, result)
 		}
 	}
 }

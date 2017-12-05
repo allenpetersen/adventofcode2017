@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -35,7 +34,6 @@ func day2b(input string) string {
 	for s.Scan() {
 		line := s.Text()
 		nums := splitLine(line)
-		fmt.Println(nums)
 		for i, v1 := range nums[:len(nums)-1] {
 			for _, v2 := range nums[i+1:] {
 				if v1%v2 == 0 {

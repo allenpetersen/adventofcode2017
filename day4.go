@@ -61,7 +61,7 @@ func checkPass2(pass string) bool {
 }
 
 func sortPass(input string) string {
-	b := []byte(input)
+	b := []rune(input)
 	sort.Slice(b, func(i, j int) bool { return b[i] > b[j] })
 	return string(b)
 }

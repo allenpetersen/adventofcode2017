@@ -12,12 +12,14 @@ func main() {
 
 	// runDay("day 1a", "day1.txt", day1a)
 	// runDay("day 1b", "day1.txt", day1b)
-	//runDay("day 2a", "day2.txt", day2a)
-	//runDay("day 2b", "day2.txt", day2b)
-	//fmt.Println(buildGrid3a(265149))
-	//fmt.Println(buildGrid3b(265149, 265149))
-	//runDay("day 4a", "day4.txt", day4a)
-	runDay("day 4b", "day4.txt", day4b)
+	// runDay("day 2a", "day2.txt", day2a)
+	// runDay("day 2b", "day2.txt", day2b)
+	// fmt.Println(buildGrid3a(265149))
+	// fmt.Println(buildGrid3b(265149, 265149))
+	// runDay("day 4a", "day4.txt", day4a)
+	// runDay("day 4b", "day4.txt", day4b)
+	runDay("day 5a", "day5.txt", day5a)
+	runDay("day 5b", "day5.txt", day5b)
 }
 
 func runDay(name, filename string, fn func(string) string) {
