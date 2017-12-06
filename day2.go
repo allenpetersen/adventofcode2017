@@ -2,11 +2,10 @@ package main
 
 import (
 	"bufio"
-	"strconv"
 	"strings"
 )
 
-func day2a(input string) string {
+func day2a(input string) interface{} {
 	s := bufio.NewScanner(strings.NewReader(input))
 	result := 0
 	for s.Scan() {
@@ -25,10 +24,10 @@ func day2a(input string) string {
 		result += highest - lowest
 	}
 
-	return strconv.Itoa(result)
+	return result
 }
 
-func day2b(input string) string {
+func day2b(input string) interface{} {
 	s := bufio.NewScanner(strings.NewReader(input))
 	result := 0
 	for s.Scan() {
@@ -45,5 +44,5 @@ func day2b(input string) string {
 		}
 	}
 
-	return strconv.Itoa(result)
+	return result
 }

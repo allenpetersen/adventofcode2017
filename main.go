@@ -5,10 +5,12 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
 	fmt.Printf("Advent of Code 2017\n\n")
+	start := time.Now()
 
 	// runDay("day 1a", "day1.txt", day1a)
 	// runDay("day 1b", "day1.txt", day1b)
@@ -20,10 +22,14 @@ func main() {
 	// runDay("day 4b", "day4.txt", day4b)
 	runDay("day 5a", "day5.txt", day5a)
 	runDay("day 5b", "day5.txt", day5b)
+
+	fmt.Printf("\nDone in %s\n", time.Since(start))
 }
 
-func runDay(name, filename string, fn func(string) string) {
-	fmt.Printf("%s: %s\n", name, fn(readInputFile(filename)))
+func runDay(name, filename string, fn func(string) interface{}) {
+	start := time.Now()
+	result := fn(readInputFile(filename))
+	fmt.Printf("%s: %v in %v\n", name, result, time.Since(start))
 }
 
 func splitLine(line string) []int {

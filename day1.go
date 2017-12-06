@@ -1,8 +1,6 @@
 package main
 
-import "strconv"
-
-func day1a(input string) string {
+func day1a(input string) interface{} {
 	matches := []int{}
 
 	for i := range input[:len(input)-1] {
@@ -20,10 +18,10 @@ func day1a(input string) string {
 	for _, i := range matches {
 		result += i
 	}
-	return strconv.Itoa(result)
+	return result
 }
 
-func day1b(input string) string {
+func day1b(input string) interface{} {
 	offset := int(len(input) / 2)
 
 	result := 0
@@ -34,5 +32,5 @@ func day1b(input string) string {
 		}
 	}
 
-	return strconv.Itoa(result)
+	return result
 }

@@ -3,11 +3,10 @@ package main
 import (
 	"bufio"
 	"sort"
-	"strconv"
 	"strings"
 )
 
-func day4a(input string) string {
+func day4a(input string) interface{} {
 	count := 0
 	s := bufio.NewScanner(strings.NewReader(input))
 	for s.Scan() {
@@ -15,10 +14,10 @@ func day4a(input string) string {
 			count++
 		}
 	}
-	return strconv.Itoa(count)
+	return count
 }
 
-func day4b(input string) string {
+func day4b(input string) interface{} {
 	count := 0
 	s := bufio.NewScanner(strings.NewReader(input))
 	for s.Scan() {
@@ -26,7 +25,7 @@ func day4b(input string) string {
 			count++
 		}
 	}
-	return strconv.Itoa(count)
+	return count
 }
 
 func checkPass(pass string) bool {
