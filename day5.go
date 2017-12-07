@@ -2,25 +2,26 @@ package main
 
 import (
 	"bufio"
+	"strconv"
 	"strings"
 )
 
-func day5a(input string) interface{} {
+func day5a(input string) string {
 	ins := []int{}
 	s := bufio.NewScanner(strings.NewReader(input))
 	for s.Scan() {
 		ins = append(ins, mustAtoi(s.Text()))
 	}
-	return runInstructionsA(ins)
+	return strconv.Itoa(runInstructionsA(ins))
 }
 
-func day5b(input string) interface{} {
+func day5b(input string) string {
 	ins := []int{}
 	s := bufio.NewScanner(strings.NewReader(input))
 	for s.Scan() {
 		ins = append(ins, mustAtoi(s.Text()))
 	}
-	return runInstructionsB(ins)
+	return strconv.Itoa(runInstructionsB(ins))
 }
 
 func runInstructionsA(instructs []int) int {

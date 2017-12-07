@@ -167,3 +167,19 @@ func TestDay5b(t *testing.T) {
 		}
 	}
 }
+
+func TestDay6a(t *testing.T) {
+	rows := []struct {
+		bank   []int
+		result int
+	}{
+		{[]int{0, 2, 7, 0}, 5},
+	}
+
+	for _, r := range rows {
+		result := balanceBank(r.bank)
+		if r.result != result {
+			t.Errorf("failed!\nexpected [%v]\nactual [%v]\n", r.result, result)
+		}
+	}
+}

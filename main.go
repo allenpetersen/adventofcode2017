@@ -20,13 +20,15 @@ func main() {
 	// fmt.Println(buildGrid3b(265149, 265149))
 	// runDay("day 4a", "day4.txt", day4a)
 	// runDay("day 4b", "day4.txt", day4b)
-	runDay("day 5a", "day5.txt", day5a)
-	runDay("day 5b", "day5.txt", day5b)
+	// runDay("day 5a", "day5.txt", day5a)
+	// runDay("day 5b", "day5.txt", day5b)
+	// runDay("day 6a", "day6.txt", day6a)
+	runDay("day 6b", "day6.txt", day6b)
 
 	fmt.Printf("\nDone in %s\n", time.Since(start))
 }
 
-func runDay(name, filename string, fn func(string) interface{}) {
+func runDay(name, filename string, fn func(string) string) {
 	start := time.Now()
 	result := fn(readInputFile(filename))
 	fmt.Printf("%s: %v in %v\n", name, result, time.Since(start))
