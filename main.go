@@ -24,7 +24,9 @@ func main() {
 	// runDay("day 5b", "day5.txt", day5b)
 	// runDay("day 6a", "day6.txt", day6a)
 	// runDay("day 6b", "day6.txt", day6b)
-	runDay("day 7b", "day7.txt", day7b)
+	// runDay("day 7b", "day7.txt", day7b)
+	//runDay("day 10a", "day10.txt", day10a)
+	runDay("day 10b", "day10.txt", day10b)
 
 	fmt.Printf("\nDone in %s\n", time.Since(start))
 }

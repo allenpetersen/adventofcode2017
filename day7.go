@@ -8,14 +8,25 @@ import (
 	"strings"
 )
 
-func day7b(input string) string {
-	return strconv.Itoa(findDiscBalance(input))
+type diskNode struct {
+	name        string
+	weight      int
+	totalWeight int
+	children    []*diskNode
 }
 
-func findDiscBalance(input string) int {
-	head := buildTree(input)
+type diskInfo struct {
+	name     string
+	weight   int
+	children []string
+}
 
-	return findBalanceError(head)
+var patternDiskLine = regexp.MustCompile("^([[:alpha:]]+) \\(([[:digit:]]+)\\)( -> (.*))?$")
+
+func day7b(input string) string {
+	head := buildTree(input)
+	result := findBalanceError(head)
+	return strconv.Itoa(result)
 }
 
 func findBalanceError(node *diskNode) int {
@@ -90,7 +101,7 @@ func buildTree(input string) *diskNode {
 		panic(fmt.Errorf("There wasn't a single head [%v]", nodes))
 	}
 
-	fmt.Printf("Head node %s\n", nodes[0].name)
+	fmt.Printf("Head node [%s]\n", nodes[0].name)
 	return nodes[0]
 }
 
@@ -134,21 +145,6 @@ func removeNode(nodes []*diskNode, name string) []*diskNode {
 	nodes[len(nodes)-1], nodes[index] = nodes[index], nodes[len(nodes)-1]
 	return nodes[:len(nodes)-1]
 }
-
-type diskNode struct {
-	name        string
-	weight      int
-	totalWeight int
-	children    []*diskNode
-}
-
-type diskInfo struct {
-	name     string
-	weight   int
-	children []string
-}
-
-var patternDiskLine = regexp.MustCompile("^([[:alpha:]]+) \\(([[:digit:]]+)\\)( -> (.*))?$")
 
 func parseDiskLine(line string) (diskInfo, error) {
 	m := patternDiskLine.FindStringSubmatch(line)

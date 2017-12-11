@@ -2,6 +2,8 @@ package main
 
 import (
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 type testRow struct {
@@ -184,14 +186,6 @@ func TestDay6a(t *testing.T) {
 	}
 }
 
-func TestDay7b(t *testing.T) {
-	result := findDiscBalance(day7TestData)
-
-	if result != 60 {
-		t.Errorf("Failed to find Disc Balance\nexpected: %d\nactual: %d", 60, result)
-	}
-}
-
 const day7TestData = `pbga (66)
 xhth (57)
 ebii (61)
@@ -205,3 +199,51 @@ jptl (61)
 ugml (68) -> gyxo, ebii, jptl
 gyxo (61)
 cntj (57)`
+
+func TestDay7b(t *testing.T) {
+	result := day7b(day7TestData)
+
+	if result != "60" {
+		t.Errorf("Failed to find Disc Balance\nexpected: %s\nactual: %s", "60", result)
+	}
+}
+
+func TestFlip(t *testing.T) {
+	rows := []struct {
+		input    []int
+		length   int
+		pos      int
+		expected []int
+	}{
+		{[]int{0, 1, 2, 3, 4}, 3, 0, []int{2, 1, 0, 3, 4}},
+		{[]int{2, 1, 0, 3, 4}, 4, 3, []int{4, 3, 0, 1, 2}},
+		{[]int{4, 3, 0, 1, 2}, 1, 3, []int{4, 3, 0, 1, 2}},
+		{[]int{4, 3, 0, 1, 2}, 5, 1, []int{3, 4, 2, 1, 0}},
+	}
+
+	for _, r := range rows {
+		filpListA(r.input, r.length, r.pos)
+		if !cmp.Equal(r.expected, r.input) {
+			t.Errorf("Failed\nexpected: %v\n  actual: %v\n", r.expected, r.input)
+		}
+	}
+}
+
+func TestHashB(t *testing.T) {
+	rows := []struct {
+		input    string
+		expected string
+	}{
+		{"", "a2582a3a0e66e6e86e3812dcb672a272"},
+		{"AoC 2017", "33efeb34ea91902bb2f59c9920caa6cd"},
+		{"1,2,3", "3efbe78a8d82f29979031a4aa0b16a9d"},
+		{"1,2,4", "63960835bcdc130f0b66d7ff4f6a5a8e"},
+	}
+
+	for _, r := range rows {
+		result := day10b(r.input)
+		if result != r.expected {
+			t.Errorf("Failed\nexpected: %v\n  actual: %v\n", r.expected, result)
+		}
+	}
+}

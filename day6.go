@@ -29,7 +29,6 @@ func balanceBank(bank []int) int {
 		state = fmt.Sprintf("%+v", bank)
 		_, ok := states[state]
 		if ok {
-			fmt.Printf("c: %d, i: %d s: %s count: %d\n", current, items, state, count)
 			return count
 		}
 
@@ -50,7 +49,6 @@ func balanceBank(bank []int) int {
 			bank[current]++
 			current++
 		}
-		fmt.Printf("c: %d, i: %d s: %s count: %d\n", current, items, state, count)
 	}
 }
 
@@ -70,7 +68,6 @@ func balanceBank2(bank []int) int {
 		state = fmt.Sprintf("%+v", bank)
 		loop, ok := states[state]
 		if ok {
-			fmt.Printf("c: %d, i: %d s: %s count: %d\n", current, items, state, count)
 			return count - loop
 		}
 
@@ -91,30 +88,8 @@ func balanceBank2(bank []int) int {
 			bank[current]++
 			current++
 		}
-		fmt.Printf("c: %d, i: %d s: %s count: %d\n", current, items, state, count)
 	}
 }
-
-// func redistBank(bank []int) {
-// 	current := findLargestSlot(bank)
-// 	items := bank[current]
-// 	current++
-// 	fmt.Printf("redistBank start c: %d, i: %d\n", current, items)
-// 	for items > 0 {
-// 		if items > 10 {
-// 			return
-// 		}
-// 		fmt.Printf("c: %d, i: %d\n", current, items)
-// 		if current > len(bank)-1 {
-// 			current = 0
-// 		}
-
-// 		bank[current]++
-// 		current++
-// 		items--
-// 	}
-// 	fmt.Printf("redistBank done")
-// }
 
 func findLargestSlot(bank []int) int {
 	max := bank[0]
