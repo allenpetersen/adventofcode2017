@@ -247,3 +247,27 @@ func TestHashB(t *testing.T) {
 		}
 	}
 }
+
+func TestScoreGroups(t *testing.T) {
+	rows := []struct {
+		input string
+		count int
+	}{
+		{"{}", 1},
+		{"{{{}}}", 6},
+		{"{{},{}}", 5},
+		{"{{{},{},{{}}}}", 16},
+		{"{<{},{},{{}}>}", 1},
+		{"{<a>,<a>,<a>,<a>}", 9},
+		{"{{<ab>},{<ab>},{<ab>},{<ab>}}", 9},
+		{"{{<!!>},{<!!>},{<!!>},{<!!>}}", 9},
+		{"{{<a!>},{<a!>},{<a!>},{<ab>}}", 3},
+	}
+
+	for _, r := range rows {
+		result := scoreGroups(r.input)
+		if result != r.count {
+			t.Errorf("Failed %s\nexpected: %v\n  actual: %v\n", r.input, r.count, result)
+		}
+	}
+}
