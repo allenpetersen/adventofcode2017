@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/hex"
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -43,7 +42,6 @@ func day10b(input string) string {
 		lengths = append(lengths, b)
 	}
 
-	fmt.Println(lengths)
 	pos := 0
 	skipsize := 0
 	for round := 0; round < 64; round++ {
@@ -72,15 +70,12 @@ func filpListA(list []int, length, pos int) {
 	if length == 1 {
 		return
 	}
-	fmt.Printf("start: %v\n", list)
 	for i := 0; i < length/2; i++ {
 		start := (pos + i) % len(list)
 		last := (pos + length - i - 1) % len(list)
-		fmt.Printf("i:%d start: %d last: %d\n", i, start, last)
 		t := list[start]
 		list[start] = list[last]
 		list[last] = t
-		fmt.Printf("%d: %v\n", i, list)
 	}
 }
 
