@@ -271,3 +271,27 @@ func TestScoreGroups(t *testing.T) {
 		}
 	}
 }
+
+func TestDay13a(t *testing.T) {
+	input := `0: 3
+1: 2
+4: 4
+6: 4`
+
+	result := checkSeverity(input)
+	if result != 24 {
+		t.Errorf("Failed\nexpected: %d\n  actual: %d\n", 24, result)
+	}
+}
+
+func TestDay13b(t *testing.T) {
+	input := `0: 3
+1: 2
+4: 4
+6: 4`
+
+	result := day13b(input)
+	if result != "10" {
+		t.Errorf("Failed\nexpected: %s\n  actual: %s\n", "10", result)
+	}
+}

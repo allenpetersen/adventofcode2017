@@ -13,25 +13,35 @@ func main() {
 	fmt.Printf("Advent of Code 2017\n\n")
 	start := time.Now()
 
-	runDay("day 1a", "day1.txt", day1a)
-	runDay("day 1b", "day1.txt", day1b)
-	runDay("day 2a", "day2.txt", day2a)
-	runDay("day 2b", "day2.txt", day2b)
-	fmt.Println(buildGrid3a(265149))
-	fmt.Println(buildGrid3b(265149, 265149))
-	runDay("day 4a", "day4.txt", day4a)
-	runDay("day 4b", "day4.txt", day4b)
-	runDay("day 5a", "day5.txt", day5a)
-	runDay("day 5b", "day5.txt", day5b)
-	runDay("day 6a", "day6.txt", day6a)
-	runDay("day 6b", "day6.txt", day6b)
-	runDay("day 7b", "day7.txt", day7b)
-	runDay("day 9a", "day9.txt", day9a)
-	runDay("day 9b", "day9.txt", day9b)
-	runDay("day 10a", "day10.txt", day10a)
-	runDay("day 10b", "day10.txt", day10b)
+	// runDay("day 1a", "day1.txt", day1a)
+	// runDay("day 1b", "day1.txt", day1b)
+	// runDay("day 2a", "day2.txt", day2a)
+	// runDay("day 2b", "day2.txt", day2b)
+	// fmt.Println(buildGrid3a(265149))
+	// fmt.Println(buildGrid3b(265149, 265149))
+	// runDay("day 4a", "day4.txt", day4a)
+	// runDay("day 4b", "day4.txt", day4b)
+	// runDay("day 5a", "day5.txt", day5a)
+	// runDay("day 5b", "day5.txt", day5b)
+	// runDay("day 6a", "day6.txt", day6a)
+	// runDay("day 6b", "day6.txt", day6b)
+	// runDay("day 7b", "day7.txt", day7b)
+	// runDay("day 9a", "day9.txt", day9a)
+	// runDay("day 9b", "day9.txt", day9b)
+	// runDay("day 10a", "day10.txt", day10a)
+	// runDay("day 10b", "day10.txt", day10b)
+	// runDay("day 13a", "day13.txt", day13a)
+	runDay("day 13b", "day13.txt", day13b)
+
+	//	modTest()
 
 	fmt.Printf("\nDone in %s\n", time.Since(start))
+}
+
+func modTest() {
+	for i := 0; i < 10; i++ {
+		fmt.Printf("i:%d 1:%d 2:%d 3:%d 4:%d 5:%d 6:%d 7:%d\n", i, i%1, i%2, i%3, i%4, i%5, i%6, i%7)
+	}
 }
 
 func runDay(name, filename string, fn func(string) string) {
