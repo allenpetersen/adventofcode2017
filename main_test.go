@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/matryer/is"
 )
 
 type testRow struct {
@@ -271,7 +272,7 @@ func TestScoreGroups(t *testing.T) {
 		{"{{},{}}", 5},
 		{"{{{},{},{{}}}}", 16},
 		{"{<{},{},{{}}>}", 1},
-		{"{<a>,<a>,<a>,<a>}", 9},
+		{"{<a>,<a>,<a>,<a>}", 1},
 		{"{{<ab>},{<ab>},{<ab>},{<ab>}}", 9},
 		{"{{<!!>},{<!!>},{<!!>},{<!!>}}", 9},
 		{"{{<a!>},{<a!>},{<a!>},{<ab>}}", 3},
@@ -306,6 +307,27 @@ func TestDay13b(t *testing.T) {
 	result := day13b(input)
 	if result != "10" {
 		t.Errorf("Failed\nexpected: %s\n  actual: %s\n", "10", result)
+	}
+}
+
+func TestDay16a(t *testing.T) {
+	is := is.New(t)
+	rows := []struct {
+		start string
+		move  string
+		end   string
+	}{
+		{"abcde", "s4", "bcdea"},
+		{"abcdefghijklmnop", "s14", "cdefghijklmnopab"},
+		// {[]byte{'a', 'b', 'c', 'd', 'e'}, "s3", []byte{'c', 'd', 'e', 'a', 'b'}},
+		// {[]byte{'a', 'b', 'c', 'd', 'e'}, "s1", []byte{'e', 'a', 'b', 'c', 'd'}},
+		// {[]byte{'e', 'a', 'b', 'c', 'd'}, "x3/4", []byte{'e', 'a', 'b', 'd', 'c'}},
+		// {[]byte{'e', 'a', 'b', 'd', 'c'}, "pe/b", []byte{'b', 'a', 'e', 'd', 'c'}},
+	}
+
+	for _, r := range rows {
+		result := dance1([]byte(r.start), r.move)
+		is.Equal(string(result), r.end)
 	}
 }
 

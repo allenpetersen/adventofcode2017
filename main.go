@@ -34,9 +34,11 @@ func main() {
 	// runDay("day 10b", "day10.txt", day10b)
 	// runDay("day 13a", "day13.txt", day13a)
 	// runDay("day 13b", "day13.txt", day13b)
+	runDay("day 16a", "day16.txt", day16a)
+	runDay("day 16b", "day16.txt", day16b)
 
 	//runDay("day 18a", "day18.txt", day18a)
-	runDay("day 18b", "day18.txt", day18b)
+	//runDay("day 18b", "day18.txt", day18b)
 
 	//	modTest()
 
