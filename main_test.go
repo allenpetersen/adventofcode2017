@@ -331,6 +331,11 @@ func TestDay16a(t *testing.T) {
 	}
 }
 
+func TestDay17a(t *testing.T) {
+	is := is.New(t)
+	is.Equal(day17a(3), 638)
+}
+
 func TestDay18b(t *testing.T) {
 	input := `snd 1
 snd 2
