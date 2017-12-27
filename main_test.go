@@ -286,6 +286,25 @@ func TestScoreGroups(t *testing.T) {
 	}
 }
 
+func TestDay11a(t *testing.T) {
+	rows := []struct {
+		moves    string
+		distance int
+	}{
+		{"ne,ne,ne", 3},
+		{"ne,ne,sw,sw", 0},
+		{"ne,ne,s,s", 2},
+		{"se,sw,se,sw,sw", 3},
+	}
+
+	for _, r := range rows {
+		distance := hexgridDistance(r.moves)
+		if distance != r.distance {
+			t.Errorf("Failed %s\nexpected: %v\n  actual: %v\n", r.moves, r.distance, distance)
+		}
+	}
+}
+
 func TestDay13a(t *testing.T) {
 	input := `0: 3
 1: 2
