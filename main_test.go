@@ -305,6 +305,22 @@ func TestDay11a(t *testing.T) {
 	}
 }
 
+func TestDay12a(t *testing.T) {
+	input := `0 <-> 2
+1 <-> 1
+2 <-> 0, 3, 4
+3 <-> 2, 4
+4 <-> 2, 3, 6
+5 <-> 6
+6 <-> 4, 5`
+
+	expected := "6"
+	result := day12a(input)
+	if result != expected {
+		t.Errorf("Failed\nexpected: %s\n  actual: %s\n", expected, result)
+	}
+}
+
 func TestDay13a(t *testing.T) {
 	input := `0: 3
 1: 2
@@ -338,10 +354,10 @@ func TestDay16a(t *testing.T) {
 	}{
 		{"abcde", "s4", "bcdea"},
 		{"abcdefghijklmnop", "s14", "cdefghijklmnopab"},
-		// {[]byte{'a', 'b', 'c', 'd', 'e'}, "s3", []byte{'c', 'd', 'e', 'a', 'b'}},
-		// {[]byte{'a', 'b', 'c', 'd', 'e'}, "s1", []byte{'e', 'a', 'b', 'c', 'd'}},
-		// {[]byte{'e', 'a', 'b', 'c', 'd'}, "x3/4", []byte{'e', 'a', 'b', 'd', 'c'}},
-		// {[]byte{'e', 'a', 'b', 'd', 'c'}, "pe/b", []byte{'b', 'a', 'e', 'd', 'c'}},
+		{"abcde", "s3", "cdeab"},
+		{"abcde", "s1", "eabcd"},
+		{"eabcd", "x3/4", "eabdc"},
+		{"eabdc", "pe/b", "baedc"},
 	}
 
 	for _, r := range rows {
