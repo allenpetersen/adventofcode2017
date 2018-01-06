@@ -208,6 +208,19 @@ func TestDay7b(t *testing.T) {
 	}
 }
 
+const day8TestData = `b inc 5 if a > 1
+a inc 1 if b < 5
+c dec -10 if a >= 1
+c inc -20 if c == 10`
+
+func TestDay8a(t *testing.T) {
+	result := day8a(day8TestData)
+
+	if result != "1" {
+		t.Errorf("Failed to find Disc Balance\nexpected: %s\nactual: %s", "1", result)
+	}
+}
+
 func TestFlip(t *testing.T) {
 	rows := []struct {
 		input    []int
@@ -293,5 +306,21 @@ func TestDay13b(t *testing.T) {
 	result := day13b(input)
 	if result != "10" {
 		t.Errorf("Failed\nexpected: %s\n  actual: %s\n", "10", result)
+	}
+}
+
+func TestDay18b(t *testing.T) {
+	input := `snd 1
+snd 2
+snd p
+rcv a
+rcv b
+rcv c
+rcv d`
+
+	expected := "2"
+	actual := day18b(input)
+	if expected != actual {
+		t.Errorf("Failed\nexpected: %s\nactual: %s", expected, actual)
 	}
 }

@@ -26,12 +26,17 @@ func main() {
 	// runDay("day 6a", "day6.txt", day6a)
 	// runDay("day 6b", "day6.txt", day6b)
 	// runDay("day 7b", "day7.txt", day7b)
+	// runDay("day 8a", "day8.txt", day8a)
+	// runDay("day 8b", "day8.txt", day8b)
 	// runDay("day 9a", "day9.txt", day9a)
 	// runDay("day 9b", "day9.txt", day9b)
 	// runDay("day 10a", "day10.txt", day10a)
 	// runDay("day 10b", "day10.txt", day10b)
 	// runDay("day 13a", "day13.txt", day13a)
-	runDay("day 13b", "day13.txt", day13b)
+	// runDay("day 13b", "day13.txt", day13b)
+
+	//runDay("day 18a", "day18.txt", day18a)
+	runDay("day 18b", "day18.txt", day18b)
 
 	//	modTest()
 
