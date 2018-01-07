@@ -3,7 +3,7 @@ package main
 type direction int
 
 const (
-	left = iota
+	left direction = iota
 	up
 	right
 	down
