@@ -15,6 +15,7 @@ func day14a(input string) int {
 }
 
 func day14b(input string) int {
+	count := 0
 	d := disk{}
 
 	for i := 0; i < 128; i++ {
@@ -22,8 +23,26 @@ func day14b(input string) int {
 		d.addRow(i, knotHash(cur))
 	}
 
-	count := d.countGroups()
+	count = d.countGroups()
+	return count
+}
 
+func day14bWithRender(input string) int {
+	events := make(chan diskEvent)
+	count := 0
+	go func() {
+		d := disk{events: events}
+
+		for i := 0; i < 128; i++ {
+			cur := fmt.Sprintf("%s-%d", input, i)
+			d.addRow(i, knotHash(cur))
+		}
+
+		count = d.countGroups()
+		close(events)
+	}()
+
+	renderDefrag(events)
 	return count
 }
 
@@ -40,13 +59,29 @@ func countSetBits(bytes []byte) int {
 }
 
 type disk struct {
-	grid  [128][128]bool
-	group []diskLocation
+	grid   [128][128]bool
+	group  []diskLocation
+	events chan diskEvent
 }
 
 type diskLocation struct {
 	x int
 	y int
+}
+
+type diskEventKind int
+
+const (
+	start diskEventKind = iota
+	newLocation
+	groupComplete
+	groupCleared
+	done
+)
+
+type diskEvent struct {
+	kind diskEventKind
+	disk disk
 }
 
 func (d *disk) addRow(row int, bytes []byte) {
@@ -78,15 +113,17 @@ func (d disk) print() {
 }
 
 func (d *disk) countGroups() int {
+	d.fireEvent(start)
 	count := 0
-	for x := 0; x < 128; x++ {
-		for y := 0; y < 128; y++ {
+	for y := 0; y < 128; y++ {
+		for x := 0; x < 128; x++ {
 			if d.grid[x][y] {
 				d.clearGroup(x, y)
 				count++
 			}
 		}
 	}
+	d.fireEvent(done)
 	return count
 }
 
@@ -94,10 +131,13 @@ func (d *disk) clearGroup(x, y int) {
 	d.group = []diskLocation{}
 
 	d.findGroup(x, y)
+	d.fireEvent(groupComplete)
 
 	for _, l := range d.group {
 		d.grid[l.x][l.y] = false
 	}
+	d.group = nil
+	d.fireEvent(groupCleared)
 }
 
 func (d *disk) findGroup(x, y int) {
@@ -118,9 +158,16 @@ func (d *disk) findGroup(x, y int) {
 	}
 
 	d.group = append(d.group, loc)
+	d.fireEvent(newLocation)
 
 	d.findGroup(x-1, y)
 	d.findGroup(x+1, y)
 	d.findGroup(x, y-1)
 	d.findGroup(x, y+1)
+}
+
+func (d *disk) fireEvent(kind diskEventKind) {
+	if d.events != nil {
+		d.events <- diskEvent{kind, *d}
+	}
 }
