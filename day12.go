@@ -28,7 +28,6 @@ func buildGraph(input string) graph {
 		con := parsePlumberLine(line)
 		g.addNode(con)
 	}
-	fmt.Printf("graph size %d\n", len(g.nodes))
 	return g
 }
 

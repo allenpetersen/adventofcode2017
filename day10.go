@@ -28,6 +28,12 @@ func day10a(input string) string {
 }
 
 func day10b(input string) string {
+	hash := knotHash(input)
+
+	return hex.EncodeToString(hash)
+}
+
+func knotHash(input string) []byte {
 	list := make([]int, 256, 256)
 
 	for i := 0; i < 256; i++ {
@@ -63,7 +69,7 @@ func day10b(input string) string {
 		hash[i] = t
 	}
 
-	return hex.EncodeToString(hash)
+	return hash
 }
 
 func filpListA(list []int, length, pos int) {

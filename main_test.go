@@ -343,6 +343,27 @@ func TestDay13b(t *testing.T) {
 	if result != "10" {
 		t.Errorf("Failed\nexpected: %s\n  actual: %s\n", "10", result)
 	}
+
+}
+
+func TestDay14a(t *testing.T) {
+	intput := "flqrgnkx"
+	actual := day14a("flqrgnkx")
+	expected := 8108
+
+	if actual != expected {
+		t.Errorf("Failed %s\nexpected: %s\n  actual: %s\n", intput, expected, actual)
+	}
+}
+
+func TestDay14b(t *testing.T) {
+	intput := "flqrgnkx"
+	actual := day14b("flqrgnkx")
+	expected := 1242
+
+	if actual != expected {
+		t.Errorf("Failed %s\nexpected: %s\n  actual: %s\n", intput, expected, actual)
+	}
 }
 
 func TestDay16a(t *testing.T) {
@@ -380,7 +401,7 @@ rcv b
 rcv c
 rcv d`
 
-	expected := "2"
+	expected := "3"
 	actual := day18b(input)
 	if expected != actual {
 		t.Errorf("Failed\nexpected: %s\nactual: %s", expected, actual)

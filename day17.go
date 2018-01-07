@@ -1,29 +1,20 @@
 package main
 
 func day17a(skip int) int {
-	//list := make([]int, 50000002, 50000002)
+	list := make([]int, 2019, 2019)
 	end := 0
 	c := 0
 
-	last := 0
-	for i := 1; i <= 50000000; i++ {
+	for i := 1; i <= 2017; i++ {
 		end++
 		c = (c + skip) % end
-		// fmt.Printf("i:%d c:%d\n", i, c)
-		// if end-c > 0 {
-		// 	move(list, c, end-c)
-		// }
-		// fmt.Println(list)
-		if c == 0 {
-			last = i
+		if end-c > 0 {
+			move(list, c, end-c)
 		}
 		c++
-		//list[c] = i
-		//fmt.Printf("\ni:%d c:%d - %v\n", i, c, list)
+		list[c] = i
 	}
-	//fmt.Println(list)
-	//return list[1]
-	return last
+	return list[c+1]
 }
 
 func move(list []int, pos, size int) {

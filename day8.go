@@ -24,7 +24,6 @@ func day8a(input string) string {
 		line := s.Text()
 		inst := parseInstructionLine(line)
 
-		fmt.Println(inst)
 		if testCondition(regs, inst) {
 			switch inst.action {
 			case "inc":
@@ -47,7 +46,6 @@ func day8b(input string) string {
 		line := s.Text()
 		inst := parseInstructionLine(line)
 
-		fmt.Println(inst)
 		if testCondition(regs, inst) {
 			switch inst.action {
 			case "inc":
